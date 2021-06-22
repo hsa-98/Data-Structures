@@ -63,6 +63,10 @@ public class LinkedList {
 
     }
 
+    /**
+     * This function prints the LinkedList
+     * @param <E>
+     */
     public <E> void print() {
         if (head.getNode() == null) {
             System.out.println("Linked list is empty");
@@ -75,6 +79,11 @@ public class LinkedList {
         }
     }
 
+    /**
+     * This function adds element before the head element.
+     * @param num
+     * @param <E>
+     */
     public <E> void addBeforeHead(E num) {
         Node node = new Node();
         node.setNode(num);
