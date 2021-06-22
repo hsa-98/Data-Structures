@@ -15,14 +15,14 @@ public class LinkedList {
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
-        while (choice != 7) {
+        while (choice != 8) {
             System.out.println("1)Add number in inked list");
             System.out.println("2)Print linked list");
             System.out.println("3)Add element before the head element.");
             System.out.println("4)Add element at a certain position");
             System.out.println("5).Pop element");
             System.out.println("6)Pop Last element");
-            System.out.println("7)Search an element");
+            System.out.println("7)Search an element and enter a new element after it");
             System.out.println("8)Exit");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
@@ -53,7 +53,11 @@ public class LinkedList {
                 case 7:
                     System.out.println("Enter the number you want to search");
                     num = sc.nextInt();
-                    linkedList.search(num);
+                    System.out.println("Enter the element you want to enter");
+                    int  num1 = sc.nextInt();
+                    linkedList.search(num,num1);
+                    break;
+                case 8:
                     break;
             }
         }
@@ -132,9 +136,10 @@ public class LinkedList {
 
     /**
      * This method pops the head element and replaces it with the second element
+     *
      * @param <E>
      */
-    public <E> void popElement(){
+    public <E> void popElement() {
         System.out.println(head.getNode());
         head = head.getNext();
     }
@@ -142,32 +147,37 @@ public class LinkedList {
     /**
      * This method pops the last element
      */
-    public <E> void popLast(){
+    public <E> void popLast() {
         Node temp = head;
         Node prev = temp;
-        while(temp.getNext() != null){
+        while (temp.getNext() != null) {
             prev = temp;
             temp = temp.getNext();
         }
         prev.setNext(null);
     }
+
     /**
      * Can search for a particular value in linked list
+     * and then add a new element after the element
      */
-    public <E> void search(E num){
+    public <E> void search(E num,E num1) {
         Node temp = head;
         int flag = 0;
-        while(temp.getNext()!=null){
-            if(temp.getNode() == num){
-                E num1 =(E)temp.getNode();
-                System.out.println("Element Found"+num1);
+        while (temp.getNext() != null) {
+            if (temp.getNode() == num) {
                 flag = 1;
                 break;
             }
             temp = temp.getNext();
         }
-        if(flag == 0){
+        if (flag == 0) {
             System.out.println("Element doesnt exists");
+        } else {
+            Node node = new Node();
+            node.setNode(num1);
+            node.setNext(temp.getNext());
+            temp.setNext(node);
         }
 
     }
