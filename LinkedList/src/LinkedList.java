@@ -8,17 +8,19 @@ import java.util.Scanner;
 
 public class LinkedList {
     Node head = new Node();
+    Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
-        while (choice != 4) {
+        while (choice != 5) {
             System.out.println("1)Add number in inked list");
             System.out.println("2)Print linked list");
             System.out.println("3)Add element before the head element.");
-            System.out.println("4).Exit");
+            System.out.println("4)Add element at a certain position");
+            System.out.println("5).Exit");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
             switch (choice) {
@@ -36,8 +38,9 @@ public class LinkedList {
                     linkedList.addBeforeHead(num);
                     break;
                 case 4:
-                    break;
-
+                    System.out.println("Enter the number you want to add");
+                    num = sc.nextInt();
+                    linkedList.addInBetween(num);
             }
         }
     }
@@ -90,5 +93,23 @@ public class LinkedList {
         Node temp = head;
         head = node;
         node.setNext(temp);
+    }
+
+    /**
+     * This method  adds element at a certain position given by the user
+     * * @param num
+     * @param <E>
+     */
+    public <E> void addInBetween(E num) {
+        System.out.println("Enter the positin you want to enter at");
+        int pos = sc.nextInt();
+        Node node = new Node();
+        node.setNode(num);
+        Node temp = head;
+        for (int i = 1; i < pos-1; i++){
+            temp = temp.getNext();
+        }
+        node.setNext(temp.getNext());
+        temp.setNext(node);
     }
 }
