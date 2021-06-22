@@ -15,12 +15,13 @@ public class LinkedList {
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
-        while (choice != 5) {
+        while (choice != 6) {
             System.out.println("1)Add number in inked list");
             System.out.println("2)Print linked list");
             System.out.println("3)Add element before the head element.");
             System.out.println("4)Add element at a certain position");
-            System.out.println("5).Exit");
+            System.out.println("5).Pop element");
+            System.out.println("6)Exit");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
             switch (choice) {
@@ -41,6 +42,11 @@ public class LinkedList {
                     System.out.println("Enter the number you want to add");
                     num = sc.nextInt();
                     linkedList.addInBetween(num);
+                case 5:
+                    linkedList.popElement();
+                    break;
+                case 6:
+                    break;
             }
         }
     }
@@ -68,6 +74,7 @@ public class LinkedList {
 
     /**
      * This function prints the LinkedList
+     *
      * @param <E>
      */
     public <E> void print() {
@@ -84,6 +91,7 @@ public class LinkedList {
 
     /**
      * This function adds element before the head element.
+     *
      * @param num
      * @param <E>
      */
@@ -98,6 +106,7 @@ public class LinkedList {
     /**
      * This method  adds element at a certain position given by the user
      * * @param num
+     *
      * @param <E>
      */
     public <E> void addInBetween(E num) {
@@ -106,10 +115,19 @@ public class LinkedList {
         Node node = new Node();
         node.setNode(num);
         Node temp = head;
-        for (int i = 1; i < pos-1; i++){
+        for (int i = 1; i < pos - 1; i++) {
             temp = temp.getNext();
         }
         node.setNext(temp.getNext());
         temp.setNext(node);
+    }
+
+    /**
+     * This method pops the head element and replaces it with the second element
+     * @param <E>
+     */
+    public <E> void popElement(){
+        System.out.println(head.getNode());
+        head = head.getNext();
     }
 }
