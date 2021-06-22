@@ -75,10 +75,10 @@ public class LinkedList {
      */
     public <E> void add(E num) {
         if (head.getNode() == null) {
-            head.setNode(num);
+            head.setNode((Comparable) num);
         } else {
             Node node = new Node();
-            node.setNode(num);
+            node.setNode((Comparable) num);
             Node temp = head;
             while (temp.getNext() != null) {
                 temp = temp.getNext();
@@ -113,7 +113,7 @@ public class LinkedList {
      */
     public <E> void addBeforeHead(E num) {
         Node node = new Node();
-        node.setNode(num);
+        node.setNode((Comparable) num);
         Node temp = head;
         head = node;
         node.setNext(temp);
@@ -129,7 +129,7 @@ public class LinkedList {
         System.out.println("Enter the positin you want to enter at");
         int pos = sc.nextInt();
         Node node = new Node();
-        node.setNode(num);
+        node.setNode((Comparable) num);
         Node temp = head;
         for (int i = 1; i < pos - 1; i++) {
             temp = temp.getNext();
@@ -179,7 +179,7 @@ public class LinkedList {
             System.out.println("Element doesnt exists");
         } else {
             Node node = new Node();
-            node.setNode(num1);
+            node.setNode((Comparable) num1);
             node.setNext(temp.getNext());
             temp.setNext(node);
         }

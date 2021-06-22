@@ -5,8 +5,8 @@
  * @param <E>
  */
 
-public class   Node<E> {
-    private E  node; //Stores the value given by the user
+public class   Node<E extends Comparable<E>> {
+    private E node; //Stores the value given by the user
     private Node<E> next; //stores the address for the next node
 
     public E getNode() {
@@ -21,5 +21,9 @@ public class   Node<E> {
         return next;
     }
 
-    public void setNext(Node<E> next) { this.next = next; }
+    public void setNext(Node<E> next) {
+        this.next = next;
+    }
 }
+
+
