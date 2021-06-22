@@ -15,13 +15,14 @@ public class LinkedList {
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
-        while (choice != 6) {
+        while (choice != 7) {
             System.out.println("1)Add number in inked list");
             System.out.println("2)Print linked list");
             System.out.println("3)Add element before the head element.");
             System.out.println("4)Add element at a certain position");
             System.out.println("5).Pop element");
-            System.out.println("6)Exit");
+            System.out.println("6)Pop Last element");
+            System.out.println("7)Exit");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
             switch (choice) {
@@ -46,6 +47,9 @@ public class LinkedList {
                     linkedList.popElement();
                     break;
                 case 6:
+                    linkedList.popLast();
+                    break;
+                case 7:
                     break;
             }
         }
@@ -129,5 +133,18 @@ public class LinkedList {
     public <E> void popElement(){
         System.out.println(head.getNode());
         head = head.getNext();
+    }
+
+    /**
+     * This method pops the last element
+     */
+    public <E> void popLast(){
+        Node temp = head;
+        Node prev = temp;
+        while(temp.getNext() != null){
+            prev = temp;
+            temp = temp.getNext();
+        }
+        prev.setNext(null);
     }
 }
