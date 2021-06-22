@@ -15,7 +15,7 @@ public class LinkedList {
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
-        while (choice != 8) {
+        while (choice != 9) {
             System.out.println("1)Add number in inked list");
             System.out.println("2)Print linked list");
             System.out.println("3)Add element before the head element.");
@@ -23,7 +23,8 @@ public class LinkedList {
             System.out.println("5).Pop element");
             System.out.println("6)Pop Last element");
             System.out.println("7)Search an element and enter a new element after it");
-            System.out.println("8)Exit");
+            System.out.println("8)Delete Element");
+            System.out.println("9)Exit.");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
             switch (choice) {
@@ -58,6 +59,9 @@ public class LinkedList {
                     linkedList.search(num,num1);
                     break;
                 case 8:
+                    System.out.println("Enter the element you want to delete");
+                    num = sc.nextInt();
+                    linkedList.deleteElement(num);
                     break;
             }
         }
@@ -95,7 +99,7 @@ public class LinkedList {
         } else {
             Node temp = head;
             while (temp != null) {
-                System.out.println(temp.getNode());
+                System.out.print(temp.getNode()+" ");
                 temp = temp.getNext();
             }
         }
@@ -178,6 +182,30 @@ public class LinkedList {
             node.setNode(num1);
             node.setNext(temp.getNext());
             temp.setNext(node);
+        }
+
+    }
+
+    /**
+     * This element deletes an element given by the user
+     */
+    public <E> void deleteElement(E num){
+        Node temp = head;
+        Node prev = temp;
+        int flag = 0;
+        while (temp.getNext() != null) {
+            if (temp.getNode() == num) {
+                flag = 1;
+                break;
+            }
+            temp = temp.getNext();
+            prev = temp;
+        }
+        if (flag == 0) {
+            System.out.println("Element doesnt exists");
+        } else {
+            prev.setNext(temp.getNext());
+
         }
 
     }
