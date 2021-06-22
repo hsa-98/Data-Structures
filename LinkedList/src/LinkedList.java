@@ -22,7 +22,8 @@ public class LinkedList {
             System.out.println("4)Add element at a certain position");
             System.out.println("5).Pop element");
             System.out.println("6)Pop Last element");
-            System.out.println("7)Exit");
+            System.out.println("7)Search an element");
+            System.out.println("8)Exit");
             System.out.println("ENTER YOUR CHOICE");
             choice = sc.nextInt();
             switch (choice) {
@@ -50,6 +51,9 @@ public class LinkedList {
                     linkedList.popLast();
                     break;
                 case 7:
+                    System.out.println("Enter the number you want to search");
+                    num = sc.nextInt();
+                    linkedList.search(num);
                     break;
             }
         }
@@ -146,5 +150,25 @@ public class LinkedList {
             temp = temp.getNext();
         }
         prev.setNext(null);
+    }
+    /**
+     * Can search for a particular value in linked list
+     */
+    public <E> void search(E num){
+        Node temp = head;
+        int flag = 0;
+        while(temp.getNext()!=null){
+            if(temp.getNode() == num){
+                E num1 =(E)temp.getNode();
+                System.out.println("Element Found"+num1);
+                flag = 1;
+                break;
+            }
+            temp = temp.getNext();
+        }
+        if(flag == 0){
+            System.out.println("Element doesnt exists");
+        }
+
     }
 }
